@@ -5,6 +5,7 @@ Script de inicio de Excalidraw (Settings > Excalidraw > Startup script).
 */
 ea.onImageExportPathHook = (data) => {
   const name = data.excalidrawFile.basename.replace(/\.excalidraw$/, "");
-  return `pngs-generados/${name}${data.exportExtension}`;
+  const ext = data.exportExtension.split(".").pop(); // ".dark.png" -> "png"
+  return `pngs-generados/${name}.${ext}`;
 };
 ea.onImageFilePathHook = (data) => `assets/${data.currentImageName}`;
